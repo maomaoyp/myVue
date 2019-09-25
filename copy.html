@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>v-cloak的学习</title>
+		<!-- 1.引入vue.js -->
+		<script type="text/javascript"  src="./js/vue.js">	</script>
+	</head>
+	<style>
+		[v-cloak] {
+			display:  none;
+		}
+	</style>
+	<body>
+		<div id="app" >
+			<!-- 使用v-cloak 能够解决 表达式闪烁的问题 -->
+			<p  v-cloak>{{msg}}</p>
+			<!-- 默认  v-text 没有闪烁问题 -->
+			<h4 v-text="msg"></h4>
+			<!-- v-text会覆盖元素中原本的内容，但是插值表达式，只会替换自己的这个占位符，不会把整个内容清空 -->
+			<p  v-cloak>++{{msg}}--</p>
+			<h4 v-text="msg">====</h4>
+		</div>
+		<script type="text/javascript">
+			var vm=new Vue({
+				el:'#app',  
+				data(){  
+					return {
+					msg:'123',
+					msg2:''
+					}
+				}
+			})
+		</script>
+		
+		
+	</body>
+	
+</html>
+
